@@ -1,16 +1,21 @@
 package fix
 
 import scalafix._
+import scalafix.util._
 import scala.meta._
 
-final case class Scalafixplayground_v1(index: SemanticdbIndex)
-    extends SemanticRule(index, "Scalafixplayground_v1") {
+
+import scala.meta._
+
+final case class Scalafixplayground_v1(index: SemanticdbIndex) extends SemanticRule(index, "Scalafixplayground_v1") {
+
+  val valueTypes = List("Byte", "Char", "Int", "Short", "Double", "Float", "Long")
+  val valuePlusStringSymbols = valueTypes.map(vt => Symbol(s"scala.$vt#`+`(String)."))
+  val valuePlusString = SymbolMatcher.normalized(valuePlusStringSymbols: _*)  
 
   override def fix(ctx: RuleCtx): Patch = {
-    ctx.debugIndex()
-    println(s"Tree.syntax: " + ctx.tree.syntax)
-    println(s"Tree.structure: " + ctx.tree.structure)
-    Patch.empty
+    ctx.tree.collect {
+      case Term.ApplyInfix(lhs, valuePlusString(_), Nil, List(_)) => ctx.addRight(lhs, ".toString")
+    }.asPatch
   }
-
 }
