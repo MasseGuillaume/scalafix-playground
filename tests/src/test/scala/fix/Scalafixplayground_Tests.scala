@@ -2,13 +2,9 @@ package fix
 
 import scala.meta._
 import scalafix._
-import scalafix.testkit._
+import scalafix.v0._
 
 class Scalafixplayground_Tests
-  extends SemanticRuleSuite(
-    SemanticdbIndex.load(Classpath(AbsolutePath(BuildInfo.inputClassdirectory))),
-    AbsolutePath(BuildInfo.inputSourceroot),
-    Seq(AbsolutePath(BuildInfo.outputSourceroot))
-  ) {
+  extends scalafix.testkit.SemanticRuleSuite {
   runAllTests()
 }
