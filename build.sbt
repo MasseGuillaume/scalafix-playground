@@ -3,7 +3,10 @@ lazy val V = _root_.scalafix.Versions
 scalaVersion in ThisBuild := V.scala212
 
 lazy val rules = project.settings(
-  libraryDependencies += "ch.epfl.scala" %% "scalafix-core" % V.version
+  libraryDependencies ++= Seq(
+    "ch.epfl.scala" %% "scalafix-core" % V.version,
+    "com.github.masseguillaume" %% "scalameta-structure" % "0.1.0"
+  )
 )
 
 lazy val input = project.settings(
@@ -11,6 +14,9 @@ lazy val input = project.settings(
 )
 
 lazy val output = project
+  .settings(
+    scalaVersion := "2.13.0-M4"
+  )
 
 lazy val tests = project
   .settings(
@@ -27,3 +33,6 @@ lazy val tests = project
   )
   .dependsOn(input, rules)
   .enablePlugins(BuildInfoPlugin)
+
+
+

@@ -1,5 +1,10 @@
+
+
+
 package fix
 
+import scala.collection.mutable
+
 object Scalafixplayground_v1_Test {
-  // Add code that needs fixing here.
+  mutable.Map(1 -> 2).clone() += ((1, 3))
 }
