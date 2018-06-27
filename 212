@@ -1,0 +1,92 @@
+def ++(that: ⇒ Iterator[A]): Iterator[A]
+def addString(b: StringBuilder): StringBuilder
+def addString(b: StringBuilder, sep: String): StringBuilder
+def addString(b: StringBuilder, start: String, sep: String, end: String): StringBuilder
+def aggregate[B](z: ⇒ B)(seqop: (B, A) ⇒ B, combop: (B, B) ⇒ B): B
+def buffered: BufferedIterator[A]
+def collect[B](pf: PartialFunction[A, B]): Iterator[B]
+def collectFirst[B](pf: PartialFunction[A, B]): Option[B]
+
+def contains(elem: Any): Boolean
+def copyToArray(xs: Array[A]): Unit
+def copyToArray(xs: Array[A], start: Int): Unit
+def copyToArray(xs: Array[A], start: Int, len: Int): Unit
+def copyToBuffer[B >: A](dest: Buffer[B]): Unit
+def corresponds[B](that: GenTraversableOnce[B])(p: (A, B) ⇒ Boolean): Boolean
+def count(p: (A) ⇒ Boolean): Int
+
+
+def drop(n: Int): Iterator[A]
+def dropWhile(p: (A) ⇒ Boolean): Iterator[A]
+def duplicate: (Iterator[A], Iterator[A])
+def exists(p: (A) ⇒ Boolean): Boolean
+def filter(p: (A) ⇒ Boolean): Iterator[A]
+def filterNot(p: (A) ⇒ Boolean): Iterator[A]
+def find(p: (A) ⇒ Boolean): Option[A]
+def flatMap[B](f: (A) ⇒ GenTraversableOnce[B]): Iterator[B]
+
+def fold[A1 >: A](z: A1)(op: (A1, A1) ⇒ A1): A1
+def foldLeft[B](z: B)(op: (B, A) ⇒ B): B
+def foldRight[B](z: B)(op: (A, B) ⇒ B): B
+def forall(p: (A) ⇒ Boolean): Boolean
+def foreach(f: (A) ⇒ Unit): Unit
+def grouped[B >: A](size: Int): GroupedIterator[B]
+def hasDefiniteSize: Boolean
+
+def indexOf[B >: A](elem: B, from: Int): Int
+def indexOf[B >: A](elem: B): Int
+def indexWhere(p: (A) ⇒ Boolean, from: Int): Int
+def indexWhere(p: (A) ⇒ Boolean): Int
+def isEmpty: Boolean
+def isTraversableAgain: Boolean
+
+
+def length: Int
+def map[B](f: (A) ⇒ B): Iterator[B]
+def max: A
+def maxBy[B](f: (A) ⇒ B): A
+def min: A
+def minBy[B](f: (A) ⇒ B): A
+def mkString: String
+def mkString(sep: String): String
+def mkString(start: String, sep: String, end: String): String
+def nonEmpty: Boolean
+def padTo(len: Int, elem: A): Iterator[A]
+def partition(p: (A) ⇒ Boolean): (Iterator[A], Iterator[A])
+def patch[B >: A](from: Int, patchElems: Iterator[B], replaced: Int): Iterator[B]
+def product: A
+def reduce[A1 >: A](op: (A1, A1) ⇒ A1): A1
+def reduceLeft[B >: A](op: (B, A) ⇒ B): B
+def reduceLeftOption[B >: A](op: (B, A) ⇒ B): Option[B]
+def reduceOption[A1 >: A](op: (A1, A1) ⇒ A1): Option[A1]
+def reduceRight[B >: A](op: (A, B) ⇒ B): B
+def reduceRightOption[B >: A](op: (A, B) ⇒ B): Option[B]
+def sameElements(that: Iterator[_]): Boolean
+def scanLeft[B](z: B)(op: (B, A) ⇒ B): Iterator[B]
+def scanRight[B](z: B)(op: (A, B) ⇒ B): Iterator[B]
+def seq: Iterator[A]
+def size: Int
+def slice(from: Int, until: Int): Iterator[A]
+def sliding[B >: A](size: Int, step: Int = 1): GroupedIterator[B]
+def span(p: (A) ⇒ Boolean): (Iterator[A], Iterator[A])
+def sum: A
+def take(n: Int): Iterator[A]
+def takeWhile(p: (A) ⇒ Boolean): Iterator[A]
+def to[Col[_]]: Col[A]
+def toArray: Array[A]
+def toBuffer[B >: A]: Buffer[B]
+def toIndexedSeq: immutable.IndexedSeq[A]
+def toIterable: Iterable[A]
+def toIterator: Iterator[A]
+def toList: List[A]
+def toMap[T, U]: Map[T, U]
+def toSeq: Seq[A]
+def toSet[B >: A]: immutable.Set[B]
+def toStream: immutable.Stream[A]
+def toString(): String
+def toTraversable: Traversable[A]
+def toVector: Vector[A]
+def withFilter(p: (A) ⇒ Boolean): Iterator[A]
+def zip[B](that: Iterator[B]): Iterator[(A, B)]
+def zipAll[B](that: Iterator[B], thisElem: A, thatElem: B): Iterator[(A, B)]
+def zipWithIndex: Iterator[(A, Int)]

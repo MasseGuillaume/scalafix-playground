@@ -2,6 +2,14 @@ lazy val V = _root_.scalafix.Versions
 // Use a scala version supported by scalafix.
 scalaVersion in ThisBuild := V.scala212
 
+scalacOptions in ThisBuild ++= Seq(
+  "-deprecation",
+  "-encoding",
+  "UTF-8",
+  "-feature",
+  "-unchecked"
+)
+
 lazy val rules = project.settings(
   libraryDependencies ++= Seq(
     "ch.epfl.scala" %% "scalafix-core" % V.version,
@@ -16,6 +24,7 @@ lazy val input = project.settings(
 lazy val output = project
   .settings(
     scalaVersion := "2.13.0-M4"
+
   )
 
 lazy val tests = project
@@ -29,7 +38,8 @@ lazy val tests = project
         sourceDirectory.in(output, Compile).value,
       "inputClassdirectory" ->
         classDirectory.in(input, Compile).value
-    )
+    ),
+    test in Test := (test in Test).dependsOn(compile in (output, Compile)).value
   )
   .dependsOn(input, rules)
   .enablePlugins(BuildInfoPlugin)

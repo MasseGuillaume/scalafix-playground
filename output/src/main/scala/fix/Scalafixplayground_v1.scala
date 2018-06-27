@@ -3,8 +3,10 @@
 
 package fix
 
-import scala.collection.mutable
 
-object Scalafixplayground_v1_Test {
-  mutable.Map(1 -> 2).clone() += ((1, 3))
+class Playground() {
+  val xs = List(1, 2, 3)
+  xs.iterator.map(_ + 1).to(implicitly): Set[Int]
+  xs.iterator.zipAll(xs, 0, 0).to(implicitly): Array[(Int, Int)]
+  (xs.iterator ++ xs.iterator).to(implicitly): Set[Int]
 }

@@ -1,0 +1,96 @@
+def ++[B >: A](xs: ⇒ IterableOnce[B]): Iterator[B]
+def addString(b: mutable.StringBuilder): mutable.StringBuilder
+def addString(b: mutable.StringBuilder, sep: String): mutable.StringBuilder
+def addString(b: mutable.StringBuilder, start: String, sep: String, end: String): b.type
+def aggregate[B](z: ⇒ B)(seqop: (B, A) ⇒ B, combop: (B, B) ⇒ B): B <<<<
+def buffered: BufferedIterator[A]
+def collect[B](pf: PartialFunction[A, B]): Iterator[B]
+def collectFirst[B](pf: PartialFunction[A, B]): Option[B]
+def concat[B >: A](xs: ⇒ IterableOnce[B]): Iterator[B]
+def contains(elem: Any): Boolean
+def copyToArray(xs: Array[A]): Unit  <<<<<
+def copyToArray(xs: Array[A], start: Int): Unit
+def copyToArray(xs: Array[A], start: Int, len: Int): Unit
+
+
+def count(p: (A) ⇒ Boolean): Int
+def distinct: Iterator[A]
+def distinctBy[B](f: (A) ⇒ B): Iterator[A]
+def drop(n: Int): Iterator[A]
+def dropWhile(p: (A) ⇒ Boolean): Iterator[A]
+def duplicate: (Iterator[A], Iterator[A])
+def exists(p: (A) ⇒ Boolean): Boolean
+def filter(p: (A) ⇒ Boolean): Iterator[A]
+def filterNot(p: (A) ⇒ Boolean): Iterator[A]
+def find(p: (A) ⇒ Boolean): Option[A]
+def flatMap[B](f: (A) ⇒ IterableOnce[B]): Iterator[B]
+def flatten[B](implicit ev: (A) ⇒ IterableOnce[B]): Iterator[B]
+def fold[A1 >: A](z: A1)(op: (A1, A1) ⇒ A1): A1
+def foldLeft[B](z: B)(op: (B, A) ⇒ B): B
+def foldRight[B](z: B)(op: (A, B) ⇒ B): B
+def forall(p: (A) ⇒ Boolean): Boolean
+def foreach[U](f: (A) ⇒ U): Unit
+def grouped[B >: A](size: Int): GroupedIterator[B]
+
+def hasNext: Boolean
+def indexOf[B >: A](elem: B): Int
+def indexOf[B >: A](elem: B, from: Int): Int
+def indexWhere(p: (A) ⇒ Boolean, from: Int = 0): Int
+
+def isEmpty: Boolean
+
+def iterator: Iterator[A]
+def knownSize: Int
+def length: Int
+def map[B](f: (A) ⇒ B): Iterator[B]
+def max: A
+def maxBy[B](f: (A) ⇒ B): A
+def min: A
+def minBy[B](f: (A) ⇒ B): A
+def mkString: String
+def mkString(sep: String): String
+def mkString(start: String, sep: String, end: String): String
+def nonEmpty: Boolean
+
+
+def patch[B >: A](from: Int, patchElems: Iterator[B], replaced: Int): Iterator[B]
+def product: A
+def reduce[B >: A](op: (B, B) ⇒ B): B
+def reduceLeft[B >: A](op: (B, A) ⇒ B): B
+def reduceLeftOption[B >: A](op: (B, A) ⇒ B): Option[B]
+def reduceOption[B >: A](op: (B, B) ⇒ B): Option[B]
+def reduceRight[B >: A](op: (A, B) ⇒ B): B
+def reduceRightOption[B >: A](op: (A, B) ⇒ B): Option[B]
+def sameElements[B >: A](that: IterableOnce[B]): Boolean
+def scanLeft[B](z: B)(op: (B, A) ⇒ B): Iterator[B]
+
+
+def size: Int
+def slice(from: Int, until: Int): Iterator[A]
+def sliding[B >: A](size: Int, step: Int = 1): GroupedIterator[B]
+def span(p: (A) ⇒ Boolean): (Iterator[A], Iterator[A])
+def sum: A
+def take(n: Int): Iterator[A]
+def takeWhile(p: (A) ⇒ Boolean): Iterator[A]
+def to[C1](factory: Factory[A, C1]): C1
+def toArray[B >: A](implicit arg0: ClassTag[B]): Array[B]
+
+def toIndexedSeq: immutable.IndexedSeq[A]
+
+
+def toList: immutable.List[A]
+def toMap[K, V](implicit ev: <:<[A, (K, V)]): immutable.Map[K, V]
+def toSeq: immutable.Seq[A]
+def toSet[B >: A]: immutable.Set[B]
+
+def toString(): String
+
+def toVector: immutable.Vector[A]
+def withFilter(p: (A) ⇒ Boolean): Iterator[A]
+def zip[B](that: IterableOnce[B]): Iterator[(A, B)]
+def zipAll[A1 >: A, B](that: IterableOnce[B], thisElem: A1, thatElem: B): Iterator[(A1, B)]
+def zipWithIndex: Iterator[(A, Int)]
+
+
+def next(): A
+def nextOption(): Option[A]

@@ -3,8 +3,11 @@ rule = "class:fix.Scalafixplayground_v1"
 */
 package fix
 
-import scala.collection.mutable
+import scala.collection.breakOut
 
-object Scalafixplayground_v1_Test {
-  mutable.Map(1 -> 2).updated(1, 3)
+class Playground() {
+  val xs = List(1, 2, 3)
+  xs.map(_ + 1)(breakOut): Set[Int]
+  xs.zipAll(xs, 0, 0)(breakOut): Array[(Int, Int)]
+  (xs ++ xs)(breakOut): Set[Int]
 }
