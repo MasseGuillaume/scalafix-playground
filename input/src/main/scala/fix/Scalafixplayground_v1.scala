@@ -14,4 +14,6 @@ class Playground() {
   xs.collect{ case x => x }(breakOut): Set[Int]
   xs.flatMap(x => List(x))(breakOut): Set[Int]
   xs.scanLeft(0)((a, b) => a + b)(breakOut): Set[Int]
+  xs.union(xs)(breakOut): Set[Int]
+  xs.reverseMap(_ + 1)(breakOut): Set[Int]
 }
