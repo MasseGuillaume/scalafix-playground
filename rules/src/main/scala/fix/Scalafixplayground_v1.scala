@@ -26,10 +26,15 @@ final case class Scalafixplayground_v1(index: SemanticdbIndex) extends SemanticR
         ctx.addRight(lhs, ".iterator") +
         ctx.addRight(ap, ".to") +
         ctx.replaceTree(breakout, "implicitly")
+
+      case Term.Apply(ap @ Term.Apply(Term.Apply(Term.Select(lhs, _), _), _), List(breakOutSymbol(breakout))) =>
+        ctx.addRight(lhs, ".iterator") +
+        ctx.addRight(ap, ".to") +
+        ctx.replaceTree(breakout, "implicitly")        
+
     }.asPatch
   }
 }
-
 /*
 
 view
@@ -41,15 +46,15 @@ view
 
 iterator
 
-* [ ] zipAll
-* [ ] ++
-* [ ] union (rewrite to a.concat(b))
-* [ ] collect
-* [ ] flatMap
-* [ ] map
-* [ ] scanLeft
+* [x] zipAll
+* [x] ++
+* [x] map
+* [x] collect
+* [x] flatMap
+* [x] scanLeft
 * [ ] zip
 * [ ] zipWithIndex
+* [ ] union (rewrite to a.concat(b))
 
 reverse-iterator
 
